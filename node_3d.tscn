@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://ng3c1s0sgivx"]
+
+[ext_resource type="Script" uid="uid://cwvmc1konm3oj" path="res://script/player.gd" id="1_a202f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4xowi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a202f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_noarx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a0tk4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r3fl7"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_4xowi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(13.573322, 0, 0, 0, 0.9999995, 0, 0, 0, 15.295028, 0, 0, 0)
+shape = SubResource("BoxShape3D_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-13.024931, 0, 0, 0, 1, 0, 0, 0, 14.977476, 0, 0, 0)
+mesh = SubResource("BoxMesh_noarx")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(-0.99720997, 0, -0.07464793, 0, 1, 0, 0.07464793, 0, -0.99720997, 0, 4.0040326, 0)
+script = ExtResource("1_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_a0tk4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_r3fl7")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(-0.9954744, -0.039291717, 0.08652593, -0.023403836, 0.9838413, 0.17750642, -0.09210226, 0.17467803, -0.9803086, -0.13734463, 0.87502384, 0.1305699)
+fov = 89.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D"]
+transform = Transform3D(-0.97702324, 0, 0.21313275, 0, 1, 0, -0.21313275, 0, -0.97702324, 0, 0, 0)
+light_color = Color(0.2906951, 0.9999997, 0.927156, 1)
+light_energy = 16.0
+light_indirect_energy = 0.987
